@@ -74,11 +74,12 @@ public class Menu {
 	
 	static void customField() {
 		JTextField textHeight = new JTextField(String.valueOf(Main.currentSetting.getY()));
-		JTextField textWidth = new JTextField(String.valueOf(Main.currentSetting.getX()));
-		JTextField textMines = new JTextField(String.valueOf(Main.currentSetting.getMineNum()));
+		JTextField textWidth = 	new JTextField(String.valueOf(Main.currentSetting.getX()));
+		JTextField textMines = 	new JTextField(String.valueOf(Main.currentSetting.getMineNum()));
 		Object[] options = {"Height:", textHeight, "WIdth:", textWidth, "Mines:", textMines};
 		
-		if (JOptionPane.showConfirmDialog(null, options, "Custom Field", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
+		if (JOptionPane.showConfirmDialog(null, options, "Custom Field",
+						JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
 			try {
 				Setting newSetting = new Setting("", Integer.parseInt(textWidth.getText()),
 												 	 Integer.parseInt(textHeight.getText()),

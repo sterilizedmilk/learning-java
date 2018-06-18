@@ -12,7 +12,7 @@ public class Main {
 	static boolean playing = true;
 
 	static final ImageIcon SMILELY = new ImageIcon("image/mine_sweeper/smilelyFace.png"); // :)
-	static final ImageIcon DEAD = 	 new ImageIcon("image/dmine_sweeper/deadFace.png");	  // X(
+	static final ImageIcon DEAD = 	 new ImageIcon("image/mine_sweeper/deadFace.png");	  // X(
 	static final ImageIcon COOL = 	 new ImageIcon("image/mine_sweeper/sunglasses.png");  // B)
 	static final ImageIcon OoO = 	 new ImageIcon("image/mine_sweeper/OoO.png");		  // :o
 
