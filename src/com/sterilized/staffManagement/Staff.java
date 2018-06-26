@@ -80,7 +80,6 @@ public class Staff {
 
         if (temp != null && temp.isPassword(password))
             return temp;
-
         return null;
     }
 
