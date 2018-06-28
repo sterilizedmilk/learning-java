@@ -18,6 +18,7 @@ public class Main implements KeyListener {
     public static JPanel panel = new JPanel();
     
     public static final int interval = 500;
+    public static boolean popping = false;
 
     public static void main(String[] args) {
         setWindow();
@@ -71,6 +72,9 @@ public class Main implements KeyListener {
 
     @Override
     public void keyTyped(KeyEvent e) {
+        
+        if (popping)
+            return;
         char key = e.getKeyChar();
 
         switch (key) {

@@ -30,7 +30,7 @@ public class PuyoGroup {
     public void remove(Puyo puyo) {
         group.remove(puyo);
         puyo.setBelong(null);
-        
+
         if (group.size() == 0)
             groups.remove(this);
     }
@@ -58,20 +58,22 @@ public class PuyoGroup {
         groups.remove(this);
     }
 
-    public static void popAll() {        
+    public static void popAll() {
         try {
+            Main.popping = true;
             Thread.sleep(Main.interval);
+            Main.popping = false;
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-                
+
         ArrayList<PuyoGroup> arr = new ArrayList<PuyoGroup>();
         for (PuyoGroup g : groups) {
             if (g.popable()) {
                 arr.add(g);
             }
         }
-        
+
         if (arr.size() == 0)
             return;
 
