@@ -75,7 +75,7 @@ public class Main {
         timer.stop();
         if (!currentSetting.isCustom() && Record.isBest(currentSetting, time)) {
             String nickname = JOptionPane.showInputDialog("You have the fastest time for "
-                        + currentSetting.getName() + " level. Please enter your name.", "Anonymous");
+                        + currentSetting.getName() + " level.\nPlease enter your name.", "Anonymous");
             Record.saveRecord(currentSetting, time, nickname);
         }
     }
