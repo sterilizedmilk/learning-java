@@ -65,6 +65,7 @@ public class Record {
         try {
             fc = FileChannel.open(PATH, StandardOpenOption.WRITE);
             fc.write(buffer);
+            fc.truncate(buffer.position());
             fc.close();
         } catch (IOException e) {}
     }
@@ -102,6 +103,7 @@ public class Record {
         try {
             fc = FileChannel.open(PATH, StandardOpenOption.WRITE);
             fc.write(buffer);
+            fc.truncate(buffer.position());
             fc.close();
         } catch (IOException e) {}
     }
