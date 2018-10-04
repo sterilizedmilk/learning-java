@@ -6,9 +6,9 @@ public class Setting {
     private int y;
     private int mineNum;
 
-    static final Setting BEGINNER;
-    static final Setting INTERMEDIATE;
-    static final Setting ADVANCED;
+    public static final Setting BEGINNER;
+    public static final Setting INTERMEDIATE;
+    public static final Setting ADVANCED;
 
     static {
         BEGINNER =     new Setting("Beginner",      9,  9, 10);
@@ -37,5 +37,11 @@ public class Setting {
 
     public int getMineNum() {
         return mineNum;
+    }
+    
+    public boolean isCustom() {
+        if (this == BEGINNER || this == INTERMEDIATE || this == ADVANCED)
+            return false;
+        return true;
     }
 }

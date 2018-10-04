@@ -66,7 +66,7 @@ public class Menu {
             customField();
             Window.window.windowReset();
         } else if (source == Records) {
-            System.out.println("not yet!");
+            showRecords();
         } else if (source == Exit) {
             System.exit(0);
         }
@@ -74,22 +74,37 @@ public class Menu {
     
     static void customField() {
         JTextField textHeight = new JTextField(String.valueOf(Main.currentSetting.getY()));
-        JTextField textWidth =     new JTextField(String.valueOf(Main.currentSetting.getX()));
-        JTextField textMines =     new JTextField(String.valueOf(Main.currentSetting.getMineNum()));
+        JTextField textWidth =  new JTextField(String.valueOf(Main.currentSetting.getX()));
+        JTextField textMines =  new JTextField(String.valueOf(Main.currentSetting.getMineNum()));
         Object[] options = {"Height:", textHeight, "WIdth:", textWidth, "Mines:", textMines};
         
         if (JOptionPane.showConfirmDialog(null, options, "Custom Field",
                         JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
             try {
                 Setting newSetting = new Setting("", Integer.parseInt(textWidth.getText()),
-                                                      Integer.parseInt(textHeight.getText()),
-                                                      Integer.parseInt(textMines.getText()));
+                                                     Integer.parseInt(textHeight.getText()),
+                                                     Integer.parseInt(textMines.getText()));
                 
                 if (newSetting.getMineNum() < newSetting.getX() * newSetting.getY())
                     Main.currentSetting = newSetting;
             } catch (NumberFormatException a) {}
         }
         Ground.initiateField(Main.currentSetting);
+    }
+    
+    static void showRecords() {
+        Record[] records = Record.loadRecords();
+        Object[] recordInfo = {"Beginner:    " +     records[0].getSecond() + " seconds    " + records[0].getNickname(),
+                               "Intermediate:    " + records[1].getSecond() + " seconds    " + records[1].getNickname(),
+                               "Expert:    " +       records[2].getSecond() + " seconds    " + records[2].getNickname()};
+        Object[] buttons = {"Reset Scores", "OK"};
+        Object defaultButton= buttons[1];
+        if (JOptionPane.showOptionDialog(null, recordInfo,
+                "Title message", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE,
+                null, buttons, defaultButton) == 0) { // reset scores
+            Record.resetRecordFile();
+        }
+        
     }
     
 }

@@ -5,6 +5,7 @@ import java.awt.Font;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.Timer;
 
@@ -72,6 +73,11 @@ public class Main {
         playing = false;
         Ground.revealMine();
         timer.stop();
+        if (!currentSetting.isCustom() && Record.isBest(currentSetting, time)) {
+            String nickname = JOptionPane.showInputDialog("You have the fastest time for "
+                        + currentSetting.getName() + " level. Please enter your name.", "Anonymous");
+            Record.saveRecord(currentSetting, time, nickname);
+        }
     }
 
     public static void setPosition() {

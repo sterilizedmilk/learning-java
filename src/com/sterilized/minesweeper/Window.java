@@ -43,7 +43,10 @@ public class Window extends JFrame implements ActionListener, MouseListener {
         } else if (source instanceof JMenuItem) { // Menu
             Menu.handleMenu((JMenuItem) source);
         } else if (source instanceof Timer) { // Timer (every seconds)
-            Main.timePassed.setText("00" + ++Main.time);
+            if (Main.time >= 999) {
+               ((Timer) source).stop();
+            } else
+                Main.timePassed.setText("00" + ++Main.time);
         }
     }
 
@@ -85,7 +88,7 @@ public class Window extends JFrame implements ActionListener, MouseListener {
 
                 ground.reveal();
                 break;
-                
+
             case MouseEvent.BUTTON3: // Right click
                 ground.flag();
                 break;
