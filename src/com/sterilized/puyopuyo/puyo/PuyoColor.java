@@ -14,13 +14,26 @@ public enum PuyoColor {
     
     Color color; // XXX: currently field has no meaning
     
+    private static PuyoColor[] usedColor;
+    
+    public static void randomize() {
+        usedColor = new PuyoColor[4];
+        
+        int notUsed = (int) (Math.random() * 5);
+        int index = 0;
+        for (PuyoColor c : PuyoColor.values()) {
+            if (c.ordinal() == notUsed)
+                continue;
+            usedColor[index++] = c;
+        }
+    }
+    
     PuyoColor(Color color) {
         this.color = color;
     }
     
     public static PuyoColor random() {
-        PuyoColor[] arr = values();
-        return arr[(int) (Math.random() * arr.length)];
+        return usedColor[(int) (Math.random() * 4)];
     }
     
     public Icon icon() {

@@ -26,7 +26,6 @@ public class Puyo extends JLabel implements Block {
         this.color = color;
         this.loc = loc;
 
-//        this.setBorder(BorderFactory.createLineBorder(color.color, 25));
         this.setBounds(loc.x * 50, 600 - loc.y * 50, 50, 50);
     }
 
@@ -156,7 +155,7 @@ OUTTER: for (Puyo p : adj) {
         case 2:
             adjGroup[0].merge(adjGroup[1]);
         case 1:
-            adjGroup[0].add(this); // XXX: nullptr exception has occurred once
+            adjGroup[0].add(this);
             break;
         case 0:
             belong = new PuyoGroup(this);

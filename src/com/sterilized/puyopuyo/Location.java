@@ -37,8 +37,9 @@ public class Location {
             return true;
         return false;
     }
+    
     /**
-     * += other
+     * this += other
      */
     public void add(Location other) {
         x += other.x;

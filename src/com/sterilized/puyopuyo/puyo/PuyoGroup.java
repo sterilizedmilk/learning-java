@@ -60,7 +60,7 @@ public class PuyoGroup {
 
     public static void popAll() {
         try {
-            Main.popping = true;
+            Main.popping = true; // prevent moving puyo while popping
             Thread.sleep(Main.interval);
             Main.popping = false;
         } catch (InterruptedException e) {
