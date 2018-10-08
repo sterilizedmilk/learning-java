@@ -52,6 +52,9 @@ public class Record {
         buffer.flip();
 
         try {
+            if (!Files.exists(PATH))
+                Files.createDirectories(PATH.getParent());
+
             fc = FileChannel.open(PATH, StandardOpenOption.CREATE_NEW, StandardOpenOption.WRITE);
             fc.write(buffer);
             fc.close();
