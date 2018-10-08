@@ -12,7 +12,8 @@ public class PuyoGroup {
      * group of PuyoGroup
      */
     private static LinkedList<PuyoGroup> groups = new LinkedList<PuyoGroup>();
-
+    private static int combo = 0;
+    
     public PuyoGroup(Puyo first) {
         group = new LinkedList<Puyo>();
         group.add(first);
@@ -52,6 +53,7 @@ public class PuyoGroup {
     }
 
     public void pop() {
+        Main.addScore(combo, group.size());
         for (Puyo p : group) {
             p.pop();
         }
@@ -74,13 +76,15 @@ public class PuyoGroup {
             }
         }
 
-        if (arr.size() == 0)
+        if (arr.size() == 0) {
+            combo = 0;
             return;
-
+        }
+        
         for (PuyoGroup g : arr) {
             g.pop();
         }
-
+        ++combo;
         Puyo.collapse();
         popAll();
     }
