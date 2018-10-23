@@ -21,7 +21,7 @@ public class Main implements KeyListener {
     private static PuyoPair puyo;
     public static JPanel panel = new JPanel();
     private static JLabel scoreLabel = new JLabel("0", SwingConstants.RIGHT);
-    
+
     private static int score = 0;
     public static int interval = 500;
     public static boolean popping = false;
@@ -30,14 +30,14 @@ public class Main implements KeyListener {
         PuyoColor.randomize();
         setWindow();
         createNewPuyo();
-        
+
         while (true) {
             try {
                 Thread.sleep(interval);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            
+
             if (!puyo.canMoveDown()) {
                 puyo.stack();
                 createNewPuyo();
@@ -67,13 +67,13 @@ public class Main implements KeyListener {
         scoreLabel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         scoreLabel.setLayout(null);
         frame.add(scoreLabel);
-        
+
         frame.add(panel);
 
         Main main = new Main();
         frame.addKeyListener(main);
     }
-    
+
     private static void createNewPuyo() {
         if (Puyo.findPuyo(2, 11) != null) {
             JOptionPane.showMessageDialog(frame, "Game Over", "Game Over", JOptionPane.OK_OPTION);
@@ -83,7 +83,7 @@ public class Main implements KeyListener {
         puyo = new PuyoPair();
         puyo.addInto(panel);
     }
-    
+
     public static void addScore(int combo, int count) {
         for (int i = 0; i < combo; ++i) {
             count *= 2;

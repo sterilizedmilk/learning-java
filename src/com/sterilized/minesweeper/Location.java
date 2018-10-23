@@ -3,8 +3,8 @@ package com.sterilized.minesweeper;
 public class Location {
     int x, y;
 
-    // don't touch elements of array! I want to use const. :(
-    static final Location[] around = new Location[8];
+    // don't touch elements of array! I wish I could use const. :(
+    private static final Location[] around = new Location[8];
 
 /*-
  * 567
